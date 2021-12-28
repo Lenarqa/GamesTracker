@@ -1,0 +1,29 @@
+.game {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+.game h2 {
+    text-transform: uppercase;
+}
+
+/* gameInfo */
+.gameInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.gameInfo div {
+    width: 50%;
+}
+
+.gameInfo img {
+    border: 1px solid black;
+    border-radius: 100%;
+    max-width: 100px;
+}
+
+/* -gameInfo- */

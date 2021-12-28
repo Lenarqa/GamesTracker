@@ -1,0 +1,9 @@
+.gameList {
+    max-width: 80%;
+    margin: 1rem auto;
+    padding: 0;
+}
+
+.gameList li {
+    list-style: none;
+}
