@@ -14,11 +14,11 @@ const AddGameForm = (props) => {
       <Cart>
         <form onSubmit={submitHandler} className={classes.form}>
           <div>
-            <label htmlFor="name">Game title</label>
+            <label htmlFor="name">Напиши название</label>
             <input type="text" id="name" />
           </div>
           <div>
-            <label htmlFor="enemy">Your enemy</label>
+            <label htmlFor="enemy">Выбери врага</label>
             <select type="text" id="enemy">
               {ENEMYS_DYMMY.map((enemy) => (
                 <option key={enemy.name}>{enemy.name}</option>
@@ -26,8 +26,8 @@ const AddGameForm = (props) => {
             </select>
           </div>
           <div className={classes.actions}>
-            <Button onClick={props.onClose}>Cancel</Button>
-            <Button>Add Game</Button>
+            <Button onClick={props.onClose}>Отмена</Button>
+            <Button>Добавить игру</Button>
           </div>
         </form>
       </Cart>
