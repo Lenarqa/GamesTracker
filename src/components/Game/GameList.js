@@ -6,7 +6,7 @@ const GameList = (props) => {
     return (
         <ul className={classes.gameList}>
             {props.games.map((game)=>(
-                <Game title={game.title} players={game.players}/>
+                <Game key={game.title} title={game.title} players={game.players}/>
             ))}
         </ul>
     );

@@ -1,0 +1,36 @@
+.form div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form label {
+    font-size: 1.4rem;
+    margin: 0 1rem 10px 0;
+}
+
+.form input, select {
+    width: 20%;
+    padding: 0.2rem;
+    border-radius: 7px;
+}
+
+.form select {
+    width: 20%;
+    display: block;
+}
+
+.form .actions {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.form .actions button {
+    margin: 0 0.5rem;
+}

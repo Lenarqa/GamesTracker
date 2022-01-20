@@ -2,13 +2,13 @@
     color: white;
     border: none;
     border-radius: 10px;
-    background-color: #ccda0b;
+    background-color: #7e247e;
     text-transform: uppercase;
     padding: 1rem 3rem;
     cursor: pointer;
 }
 
 .btn:hover {
-    transition: 500ms ease;
-    background-color: #7b8124;
+    transition: all 500ms ease;
+    background-color: #4a2352;
 }
