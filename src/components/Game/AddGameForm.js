@@ -21,7 +21,12 @@ const AddGameForm = (props) => {
             <label htmlFor="enemy">Выбери врага</label>
             <select type="text" id="enemy">
               {ENEMYS_DYMMY.map((enemy) => (
-                <option key={enemy.name}>{enemy.name}</option>
+                <option
+                  style={{ backgroundImage: `url(${enemy.img})` }}
+                  key={enemy.name}
+                >
+                  {enemy.name}
+                </option>
               ))}
             </select>
           </div>
@@ -40,8 +45,10 @@ export default AddGameForm;
 const ENEMYS_DYMMY = [
   {
     name: "Lenar",
+    img: "https://www.gravatar.com/avatar/615553a2d9d4ed6616efed5b68e83fe2?d=wavatar&s=256",
   },
   {
     name: "Николай",
+    img: "https://www.gravatar.com/avatar/615553a2d9d4ed6616efed5b68e83fe2?d=wavatar&s=256",
   },
 ];
