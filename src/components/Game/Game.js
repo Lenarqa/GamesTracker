@@ -29,7 +29,7 @@ const Game = (props) => {
           </div>
         </section>
       </li>
-      {openForm && <IncreaseAndDecreaseForm onClose={toggleFormHandler}/>}
+      {openForm && <IncreaseAndDecreaseForm  onClose={toggleFormHandler}/>}
     </Fragment>
   );
 };

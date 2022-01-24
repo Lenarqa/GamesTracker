@@ -1,0 +1,26 @@
+.authSection {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 1rem;
+  background-color: #d3caff;
+  max-width: 45%;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(114, 113, 113, 0.22);
+}
+
+.authForm button {
+    margin-bottom: 1rem;
+}

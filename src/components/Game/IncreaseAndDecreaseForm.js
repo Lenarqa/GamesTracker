@@ -3,6 +3,7 @@ import classes from "./IncreaseAndDecreaseForm.module.css";
 import Button from "../UI/Button/Button";
 import BG from "../UI/BG/BG";
 import Cart from "../UI/Cart/Cart";
+import ChooseWinnerForm from "./ChooseWinnerForm";
 
 const IncreaseAndDecreaseForm = (props) => {
   const [isOpenChooseForm, setIsOpenChooseForm] = useState(false);
@@ -26,7 +27,7 @@ const IncreaseAndDecreaseForm = (props) => {
             </div>
           </Cart>
         )}
-        {isOpenChooseForm && <p>Hello choose form</p>}
+        {isOpenChooseForm && <ChooseWinnerForm /> }
       </BG>
     </Fragment>
   );
