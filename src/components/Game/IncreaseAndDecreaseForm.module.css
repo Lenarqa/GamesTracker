@@ -1,0 +1,42 @@
+.increaseForm {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.increaseForm h2 {
+    margin-bottom: 1rem;
+}
+
+.increaseForm button {
+    margin-bottom: 0.5rem;
+}
+
+.close {
+    cursor: pointer;
+}
+.close::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 3px;
+    height: 20px;
+    background-color: black;
+    right: 1rem;
+    top: 0.5rem;
+    transform: rotate(45deg);
+}
+
+.close::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 3px;
+    height: 20px;
+    background-color: black;
+    right: 1rem;
+    top: 0.5rem;
+    transform: rotate(-45deg);
+}
