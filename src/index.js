@@ -5,11 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import GamesContextProvider from "./store/games-context";
 import { BrowserRouter } from "react-router-dom";
+import AuthContextProvider from "./store/auth-context";
 
 ReactDOM.render(
   <BrowserRouter>
     <GamesContextProvider>
-      <App />
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
     </GamesContextProvider>
   </BrowserRouter>,
   document.getElementById("root")
