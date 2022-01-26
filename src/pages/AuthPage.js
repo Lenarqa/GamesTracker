@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import RegistrationForm from "../components/Auth/RegistrationForm";
 import Button from "../components/UI/Button/Button";
 import classes from "./AuthPage.module.css";
+import { UsersContext } from "../store/users-context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
@@ -15,6 +16,8 @@ import { AuthContext } from "../store/auth-context";
 const AuthPage = (props) => {
   const [isSingIn, setSignIn] = useState(false);
   const authCtx = useContext(AuthContext);
+  const usersCtx = useContext(UsersContext);
+
   const navigate = useNavigate();
 
   const registrationHandler = () => {
@@ -34,6 +37,13 @@ const AuthPage = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         authCtx.login(token);
+        
+        let userName = result.user.displayName;
+        let userId = result.user.uid;
+        console.log("userName from auth page = " + userName);
+        console.log("userId from auth page = " + userId);
+        usersCtx.addUser(userId, userName);
+        
         navigate("/games");
       })
       .catch((error) => {
@@ -46,7 +56,11 @@ const AuthPage = (props) => {
       <div className={classes.authForm}>
         <Button>Войти</Button>
         <Button onClick={registrationHandler}>Регистрация</Button>
-        <FontAwesomeIcon className={classes.icon} icon={faGoogle} onClick={googleSignInHandler} />
+        <FontAwesomeIcon
+          className={classes.icon}
+          icon={faGoogle}
+          onClick={googleSignInHandler}
+        />
       </div>
       {isSingIn && <RegistrationForm />}
     </section>

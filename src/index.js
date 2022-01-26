@@ -6,14 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import GamesContextProvider from "./store/games-context";
 import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./store/auth-context";
+import UsersContextProvider from "./store/users-context";
 
 ReactDOM.render(
   <BrowserRouter>
-    <GamesContextProvider>
-      <AuthContextProvider>
-        <App />
-      </AuthContextProvider>
-    </GamesContextProvider>
+    <UsersContextProvider>
+      <GamesContextProvider>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
+      </GamesContextProvider>
+    </UsersContextProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

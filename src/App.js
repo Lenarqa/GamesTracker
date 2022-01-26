@@ -8,15 +8,14 @@ import { AuthContext } from "./store/auth-context";
 
 function App() {
   const authCtx = useContext(AuthContext);
-  console.log(authCtx.isLogin);
   return (
     <div className="App">
       <Routes>
-        {/* <Route path="/" element={<AuthPage />} /> */}
         <Route path="/" element={authCtx.isLogin ? <Navigate to="/games"/> : <Navigate to="/auth"/>} />
         <Route path="/games" element={authCtx.isLogin ? <MainPage /> : <Navigate to="/auth"/>} />
         <Route path="/games" element={<MainPage />} />
         <Route path="/auth" element={authCtx.isLogin ? <Navigate to="/"/> : <AuthPage />} />
+        <Route path="/*" element={<Navigate to="/"/>} />
       </Routes>
     </div>
   );
