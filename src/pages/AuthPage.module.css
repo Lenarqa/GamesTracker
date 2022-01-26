@@ -24,3 +24,8 @@
 .authForm button {
     margin-bottom: 1rem;
 }
+
+.icon {
+  cursor: pointer;
+  font-size: 2rem;
+}
