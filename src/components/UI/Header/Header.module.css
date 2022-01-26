@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.2rem;
+    text-align: center;
+}
+
+.header li a{
+    color: white;
+    text-decoration: none;
+    transition: all 0.5s easy-out;
+}
+
+.header li a:hover {
+    text-decoration: underline;
+}
+
+
+.header nav ul li a:hover,
+.header nav ul li a:active,
+.header nav ul li a.active {
+  border-bottom: 2px solid #fff;
+}
+
+.icon {
+    cursor: pointer;
+    color: white;
+    font-size: 3rem;
+    padding: 0.2rem 1rem;
+    transition: all 0.5s ease-out;
+}
+
+.icon:hover {
+    font-size: 3.1rem;
+    transform: rotate(360deg);
+}

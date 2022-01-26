@@ -6,6 +6,7 @@ import GameList from "../components/Game/GameList";
 
 import Button from "../components/UI/Button/Button";
 import Cart from "../components/UI/Cart/Cart";
+import Header from "../components/UI/Header/Header";
 
 const MainPage = (props) => {
   const [isAddGame, setIsAddGame] = useState(false);
@@ -20,6 +21,7 @@ const MainPage = (props) => {
 
   return (
     <Fragment>
+      <Header />
       <Cart>
         <Button onClick={addGameHandler}>Add game</Button>
       </Cart>
