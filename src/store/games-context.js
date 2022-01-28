@@ -9,10 +9,24 @@ export const GamesContext = React.createContext(initState);
 
 const GamesContextProvider = (props) => {
   const [games, setGames] = useState(DUMMY_GAMES);
-  
+
   const addGameHandler = (newGame) => {
-    setGames(prevState => ([newGame, ...prevState]));
-  }
+    fetch(process.env.React_app_firebase_url + "games.json", {
+      method: "POST",
+      body: JSON.stringify(newGame),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status) {
+          setGames((prevState) => [newGame, ...prevState]);
+        }
+      })
+      .catch((error) => {
+        throw new Error("Bad post new game");
+      });
+  };
 
   initState = {
     games: games,
@@ -20,7 +34,32 @@ const GamesContextProvider = (props) => {
   };
 
   useEffect(() => {
-    //fetch data from firebase
+    fetch(process.env.React_app_firebase_url + "games.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const fethedGames = [];
+        for (const key in data) {
+          const fetchedGame = {
+            title: data[key].title,
+            players: [
+              { 
+                uId: data[key].players[0].uId,
+                name: data[key].players[0].name,
+                img: data[key].players[0].img,
+                count: data[key].players[0].count,
+              },
+              { 
+                uId: data[key].players[1].uId,
+                name: data[key].players[1].name,
+                img: data[key].players[1].img,
+                count: data[key].players[1].count,
+              }
+            ],
+          };
+          fethedGames.push(fetchedGame);
+        }
+        setGames(fethedGames);
+      });
   }, []);
 
   return (
