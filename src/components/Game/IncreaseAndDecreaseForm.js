@@ -10,7 +10,6 @@ const IncreaseAndDecreaseForm = (props) => {
 
   const toggleHandler = (event) => {
     event.preventDefault();
-    console.log("increaseHandler");
     setIsOpenChooseForm((prevState) => !prevState);
   };
 
@@ -27,7 +26,7 @@ const IncreaseAndDecreaseForm = (props) => {
             </div>
           </Cart>
         )}
-        {isOpenChooseForm && <ChooseWinnerForm /> }
+        {isOpenChooseForm && <ChooseWinnerForm onClose={props.onClose} players={props.players} />}
       </BG>
     </Fragment>
   );

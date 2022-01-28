@@ -17,6 +17,7 @@
 .close {
     cursor: pointer;
 }
+
 .close::after {
     position: absolute;
     display: block;

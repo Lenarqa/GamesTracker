@@ -32,6 +32,7 @@ const AddGameForm = (props) => {
     let enemy = usersCtx.users.find(item => item.uId === enemyUId);
 
     let newGame = {
+      id: new Date().getUTCMilliseconds().toString(),
       title: inputTitle,
       players: [
         {

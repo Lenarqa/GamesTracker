@@ -7,7 +7,6 @@ const Game = (props) => {
   const [openForm, setOpenForm] = useState(false);
 
   const toggleFormHandler = () => {
-    console.log("toggle");
     setOpenForm(prevState => !prevState);
   }
 
@@ -29,7 +28,7 @@ const Game = (props) => {
           </div>
         </section>
       </li>
-      {openForm && <IncreaseAndDecreaseForm  onClose={toggleFormHandler}/>}
+      {openForm && <IncreaseAndDecreaseForm players={props.players}  onClose={toggleFormHandler}/>}
     </Fragment>
   );
 };
