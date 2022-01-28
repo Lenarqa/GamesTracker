@@ -36,12 +36,11 @@ const AuthPage = (props) => {
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        authCtx.login(token);
         
         let userName = result.user.displayName;
         let userId = result.user.uid;
-        console.log("userName from auth page = " + userName);
-        console.log("userId from auth page = " + userId);
+
+        authCtx.login(token, userId);
         usersCtx.addUser(userId, userName);
         
         navigate("/games");

@@ -23,7 +23,7 @@ const UsersContextProvider = (props) => {
         setUsers(updatedUsers);
       })
       .catch((error) => {
-        throw new Error("Bag get user request");
+        throw new Error("Bad get user request");
       });
   },[]);
 
@@ -32,12 +32,7 @@ const UsersContextProvider = (props) => {
   }, [getUsers]);
 
   const addUserHandler = (uId, name) => {
-    console.log(users);
-    console.log(
-      "Есть ли пользователь в массиве?" + users.some((item) => item.uId === uId)
-    );
     if (users.some((item) => item.uId === uId)) {
-      console.log("пользователь уже существует");
       return;
     }
 
