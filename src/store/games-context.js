@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, onValue } from "firebase/database";
+import { doc, onSnapshot } from "firebase/firestore";
 
 let initState = {
   games: [],
@@ -29,9 +32,31 @@ const GamesContextProvider = (props) => {
       });
   };
 
-  const increaseCountHandler = (gameId, uId) => {
-    console.log(gameId, uId);
-  }
+  const increaseCountHandler = async (gameKey, uId, isIncrease) => {
+    const firebaseConfigy = JSON.parse(process.env.React_app_FIREBASE_CONFIG);
+    const app = initializeApp(firebaseConfigy);
+    const database = getDatabase(app);
+
+    let updatedGame = games.find(game => game.key === gameKey);
+    updatedGame.players.map(player => {
+      if(player.uId === uId) {
+        if(isIncrease) {
+          player.count++;
+        }else{
+          if(player.count === 0) {
+            return;
+          }
+          player.count--;
+        }
+      }
+      return player;
+    });
+
+    console.log(updatedGame);
+    
+    set(ref(database, 'games/' + gameKey), updatedGame);    
+
+  };
 
   initState = {
     games: games,
@@ -46,21 +71,22 @@ const GamesContextProvider = (props) => {
         const fethedGames = [];
         for (const key in data) {
           const fetchedGame = {
+            key: key,
             id: data[key].id,
             title: data[key].title,
             players: [
-              { 
+              {
                 uId: data[key].players[0].uId,
                 name: data[key].players[0].name,
                 img: data[key].players[0].img,
                 count: data[key].players[0].count,
               },
-              { 
+              {
                 uId: data[key].players[1].uId,
                 name: data[key].players[1].name,
                 img: data[key].players[1].img,
                 count: data[key].players[1].count,
-              }
+              },
             ],
           };
           fethedGames.push(fetchedGame);

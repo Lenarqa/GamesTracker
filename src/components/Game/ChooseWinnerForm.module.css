@@ -28,19 +28,8 @@
 }
 
 .player1:hover {
-  /* background-color: rgb(1, 1, 126); */
   transform: scale(1.1);
 }
-
-/* .game::before {
-  display: block;
-  content: "";
-  height: 100%;
-  position: absolute;
-  width: 50px;
-  right: 45%;
-  background: linear-gradient(to top left, red 50%, blue 51%);
-} */
 
 .player2 {
   background-color: red;
@@ -75,8 +64,8 @@
   width: 3px;
   height: 20px;
   background-color: black;
-  right: 2rem;
-  top: 0.5rem;
+  right: 1rem;
+  top: 0rem;
   transform: rotate(45deg);
 }
 
@@ -87,7 +76,7 @@
   width: 3px;
   height: 20px;
   background-color: black;
-  right: 2rem;
-  top: 0.5rem;
+  right: 1rem;
+  top: 0rem;
   transform: rotate(-45deg);
 }

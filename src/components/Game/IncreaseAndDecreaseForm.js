@@ -7,9 +7,10 @@ import ChooseWinnerForm from "./ChooseWinnerForm";
 
 const IncreaseAndDecreaseForm = (props) => {
   const [isOpenChooseForm, setIsOpenChooseForm] = useState(false);
+  const [isIncrease, setIsIncrease] = useState(false);
 
-  const toggleHandler = (event) => {
-    event.preventDefault();
+  const toggleHandler = (isIncreaseValue) => {
+    setIsIncrease(isIncreaseValue);
     setIsOpenChooseForm((prevState) => !prevState);
   };
 
@@ -20,13 +21,24 @@ const IncreaseAndDecreaseForm = (props) => {
           <Cart>
             <div className={classes.increaseForm}>
               <h2>Что делаем?</h2>
-              <Button onClick={toggleHandler}>Прибавить</Button>
-              <Button onClick={toggleHandler}>Уменьшить</Button>
+              <Button onClick={toggleHandler.bind(null, true)}>
+                Прибавить
+              </Button>
+              <Button onClick={toggleHandler.bind(null, false)}>
+                Уменьшить
+              </Button>
               <div className={classes.close} onClick={props.onClose}></div>
             </div>
           </Cart>
         )}
-        {isOpenChooseForm && <ChooseWinnerForm onClose={props.onClose} players={props.players} />}
+        {isOpenChooseForm && (
+          <ChooseWinnerForm
+            isIncrease={isIncrease}
+            onClose={props.onClose}
+            gameKey={props.gameKey}
+            players={props.players}
+          />
+        )}
       </BG>
     </Fragment>
   );

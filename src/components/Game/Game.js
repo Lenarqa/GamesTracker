@@ -28,7 +28,7 @@ const Game = (props) => {
           </div>
         </section>
       </li>
-      {openForm && <IncreaseAndDecreaseForm players={props.players}  onClose={toggleFormHandler}/>}
+      {openForm && <IncreaseAndDecreaseForm gameKey={props.gameKey} players={props.players}  onClose={toggleFormHandler}/>}
     </Fragment>
   );
 };
