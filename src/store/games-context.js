@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue } from "firebase/database";
-import { doc, onSnapshot } from "firebase/firestore";
 
 let initState = {
   games: [],
@@ -37,13 +36,13 @@ const GamesContextProvider = (props) => {
     const app = initializeApp(firebaseConfigy);
     const database = getDatabase(app);
 
-    let updatedGame = games.find(game => game.key === gameKey);
-    updatedGame.players.map(player => {
-      if(player.uId === uId) {
-        if(isIncrease) {
+    let updatedGame = games.find((game) => game.key === gameKey);
+    updatedGame.players.map((player) => {
+      if (player.uId === uId) {
+        if (isIncrease) {
           player.count++;
-        }else{
-          if(player.count === 0) {
+        } else {
+          if (player.count === 0) {
             return;
           }
           player.count--;
@@ -52,10 +51,7 @@ const GamesContextProvider = (props) => {
       return player;
     });
 
-    console.log(updatedGame);
-    
-    set(ref(database, 'games/' + gameKey), updatedGame);    
-
+    set(ref(database, "games/" + gameKey), updatedGame);
   };
 
   initState = {

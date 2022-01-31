@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react/cjs/react.development';
 import Game from './Game';
 import classes from './GameList.module.css';
 

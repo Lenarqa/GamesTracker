@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import classes from "./MainPage.module.css";
 
 import AddGameForm from "../components/Game/AddGameForm";
@@ -9,10 +9,12 @@ import Cart from "../components/UI/Cart/Cart";
 import Header from "../components/UI/Header/Header";
 
 import { GamesContext } from "../store/games-context";
+import { AuthContext } from "../store/auth-context";
 
 const MainPage = (props) => {
   const [isAddGame, setIsAddGame] = useState(false);
   const gamesCtx = useContext(GamesContext);
+  const authCtx = useContext(AuthContext);
   
   const addGameHandler = () => {
     setIsAddGame((prevState) => !prevState);
@@ -22,10 +24,15 @@ const MainPage = (props) => {
     setIsAddGame(false);
   }
 
+  let userGames = gamesCtx.games.filter(game => {
+    if(game.players[0].uId === authCtx.uId || game.players[1].uId === authCtx.uId) {
+      return game;
+    }
+  });
   
   let listContent = <h2>Ооо нет, у вас еще нет игр! Добавьте их скорее!</h2>;
-  if(gamesCtx.games.length > 0) {
-    listContent = <GameList games={gamesCtx.games} />;
+  if(userGames.length > 0) {
+    listContent = <GameList games={userGames} />;
   } 
 
   return (
