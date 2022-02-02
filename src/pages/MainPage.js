@@ -1,5 +1,4 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
-import classes from "./MainPage.module.css";
+import React, { Fragment, useState, useContext } from "react";
 
 import AddGameForm from "../components/Game/AddGameForm";
 import GameList from "../components/Game/GameList";

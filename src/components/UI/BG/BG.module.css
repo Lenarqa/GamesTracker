@@ -1,13 +1,12 @@
 .bg {
-    /* background-color: #3a172d; */
-    /* opacity: 0.8; */
-    position: fixed; 
-    left: 0; 
-    right: 0; 
-    top: 0; 
-    bottom: 0; 
-    padding: 16px; 
-    background-color: rgba(56, 5, 66, 0.8); 
-    z-index: 100; 
-    overflow: auto; 
+  cursor: pointer;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 16px;
+  background-color: rgba(56, 5, 66, 0.8);
+  z-index: 10;
+  overflow: auto;
 }

@@ -1,8 +1,8 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, Fragment } from "react";
 import classes from "./AddGameForm.module.css";
 import Button from "../UI/Button/Button";
-import Cart from "../UI/Cart/Cart";
 import BG from "../UI/BG/BG";
+import FormCart from "../UI/FormCart/FormCart";
 import { AuthContext } from "../../store/auth-context";
 import { UsersContext } from "../../store/users-context";
 import { GamesContext } from "../../store/games-context";
@@ -28,8 +28,8 @@ const AddGameForm = (props) => {
 
     let enemyUId = inputEnemyRef.current.value;
 
-    let player = usersCtx.users.find(item => item.uId === authCtx.uId);
-    let enemy = usersCtx.users.find(item => item.uId === enemyUId);
+    let player = usersCtx.users.find((item) => item.uId === authCtx.uId);
+    let enemy = usersCtx.users.find((item) => item.uId === enemyUId);
 
     let newGame = {
       id: new Date().getUTCMilliseconds().toString(),
@@ -58,8 +58,9 @@ const AddGameForm = (props) => {
   let users = usersCtx.users.filter((item) => item.uId !== authCtx.uId);
 
   return (
-    <BG>
-      <Cart>
+    <Fragment>
+      <BG onClose={props.onClose} />
+      <FormCart>
         <form onSubmit={submitHandler} className={classes.form}>
           <div>
             <label htmlFor="name">Напиши название</label>
@@ -85,20 +86,9 @@ const AddGameForm = (props) => {
             <Button>Добавить игру</Button>
           </div>
         </form>
-      </Cart>
-    </BG>
+      </FormCart>
+    </Fragment>
   );
 };
 
 export default AddGameForm;
-
-const ENEMYS_DYMMY = [
-  {
-    name: "Lenar",
-    img: "https://www.gravatar.com/avatar/615553a2d9d4ed6616efed5b68e83fe2?d=wavatar&s=256",
-  },
-  {
-    name: "Николай",
-    img: "https://www.gravatar.com/avatar/615553a2d9d4ed6616efed5b68e83fe2?d=wavatar&s=256",
-  },
-];

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Cart from "../UI/Cart/Cart";
 import classes from "./ChooseWinnerForm.module.css";
 import { GamesContext } from "../../store/games-context";
+import FormCart from "../UI/FormCart/FormCart";
 
 const ChooseWinnerForm = (props) => {
   const gamesCtx = useContext(GamesContext);
@@ -12,7 +12,7 @@ const ChooseWinnerForm = (props) => {
   };
 
   return (
-    <Cart>
+    <FormCart>
       <div className={classes.gameCart}>
         <h2>Выберите победителя</h2>
         <div className={classes.close} onClick={props.onClose}></div>
@@ -37,7 +37,7 @@ const ChooseWinnerForm = (props) => {
           </section>
         </form>
       </div>
-    </Cart>
+    </FormCart>
   );
 };
 

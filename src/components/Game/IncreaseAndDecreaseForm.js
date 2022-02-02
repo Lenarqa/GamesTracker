@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import classes from "./IncreaseAndDecreaseForm.module.css";
 import Button from "../UI/Button/Button";
 import BG from "../UI/BG/BG";
-import Cart from "../UI/Cart/Cart";
+import FormCart from "../UI/FormCart/FormCart";
 import ChooseWinnerForm from "./ChooseWinnerForm";
 
 const IncreaseAndDecreaseForm = (props) => {
@@ -16,9 +16,9 @@ const IncreaseAndDecreaseForm = (props) => {
 
   return (
     <Fragment>
-      <BG>
+      <BG onClose={props.onClose} />
         {!isOpenChooseForm && (
-          <Cart>
+          <FormCart>
             <div className={classes.increaseForm}>
               <h2>Что делаем?</h2>
               <Button onClick={toggleHandler.bind(null, true)}>
@@ -29,7 +29,7 @@ const IncreaseAndDecreaseForm = (props) => {
               </Button>
               <div className={classes.close} onClick={props.onClose}></div>
             </div>
-          </Cart>
+          </FormCart>
         )}
         {isOpenChooseForm && (
           <ChooseWinnerForm
@@ -39,7 +39,6 @@ const IncreaseAndDecreaseForm = (props) => {
             players={props.players}
           />
         )}
-      </BG>
     </Fragment>
   );
 };
